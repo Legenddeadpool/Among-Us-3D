@@ -26,7 +26,17 @@ public class CameraController : MonoBehaviour
                 Debug.Log("In meeting, can't switch cursor mode.");
                 return;
             }
-            ToggleCursorMode();
+
+            else if (GameManager.instance.taskActive)
+            {
+                Debug.Log("Currently in a task, can't switch cursor mode.");
+                return;
+            }
+
+            else
+            {
+                ToggleCursorMode();
+            }
         }
 
         if (GameManager.instance.taskActive)
@@ -61,11 +71,13 @@ public class CameraController : MonoBehaviour
         if (Cursor.lockState == CursorLockMode.None)
         {
             Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
         }
 
         else
         {
             Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
     }
         

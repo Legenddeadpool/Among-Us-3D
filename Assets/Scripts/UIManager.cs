@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class UIManager : MonoBehaviour
 
@@ -16,6 +17,7 @@ public class UIManager : MonoBehaviour
     public GameObject hostMenu;
     public GameObject lobbyUI;
     public GameObject meetingScreen;
+    public TMP_Text ejectText;
 
     public bool inMeeting = false;
 

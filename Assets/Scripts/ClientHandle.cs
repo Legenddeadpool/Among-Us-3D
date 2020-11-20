@@ -113,7 +113,7 @@ public class ClientHandle : MonoBehaviour
     public static void MeetingEnded(Packet _packet)
     {
         string victimName = _packet.ReadString();
-        if(victimName != "Skip")
+        if (victimName != "Skip")
         {
             Debug.Log($"{victimName} was voted off.");
             foreach (PlayerManager _player in GameManager.players.Values)
@@ -122,6 +122,7 @@ public class ClientHandle : MonoBehaviour
                 {
                     //Ensures they don't spawn a corpse
                     _player.wasVoted = true;
+                    GameManager.instance.StartEject(_player);
 
                     //Turns them into a ghost.
                     _player.player.layer = 6;
@@ -136,9 +137,14 @@ public class ClientHandle : MonoBehaviour
                 {
                     _player.wasVoted = true;
                     GameManager.players[Client.instance.myId].Die();
+                    GameManager.instance.StartEject(_player);
                 }
                 
             }
+        }
+        else
+        {
+            Debug.Log("No players were voted off.");
         }
 
         Debug.Log("Meeting ended.");

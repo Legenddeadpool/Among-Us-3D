@@ -15,6 +15,10 @@ public class GameManager : MonoBehaviour
     public GameObject playerPrefab;
     public GameObject corpsePrefab;
     public GameObject killAnimationPrefab;
+    public GameObject ejectViewer;
+    public Animator ejectAnimator;
+    public GameObject ejectPrefab;
+    public string latestEject = "Local Player";
     public GameObject[] lights = new GameObject[16];
     public Light ghostLight;
     public GameObject map;
@@ -25,6 +29,8 @@ public class GameManager : MonoBehaviour
     public GameObject meetingDisplay;
     public bool taskActive;
     public bool startedGame = false;
+    public GameObject ejectedPlayer;
+
 
     private void Awake()
     {
@@ -104,5 +110,33 @@ public class GameManager : MonoBehaviour
     public static void ColourTaken(int _colourId)
     {
         instance.buttons[_colourId].gameObject.SetActive(false);
+    }
+
+    public void StartEject(PlayerManager _ejectedPlayer)
+    {
+        taskActive = true;
+        if (Cursor.lockState == CursorLockMode.Locked)
+        {
+            players[Client.instance.myId]._controller.playerCamera.GetComponent<CameraController>().ToggleCursorMode();
+        }
+        latestEject = _ejectedPlayer.username;
+        Debug.Log("Beginning eject animation.");
+        players[Client.instance.myId]._controller.playerCamera.enabled = false;
+        ejectedPlayer = Instantiate(ejectPrefab, new Vector3(5f, 13.5f, 17f), Quaternion.identity);
+        ejectedPlayer.GetComponent<MeshRenderer>().material = _ejectedPlayer.player.GetComponentInChildren<MeshRenderer>().material;
+        ejectViewer.SetActive(true);
+        ejectAnimator = ejectedPlayer.GetComponent<Animator>();
+        ejectAnimator.SetTrigger("Eject");
+        Debug.Log("Eject animation started.");
+    }
+
+    public void StopEject()
+    {
+        taskActive = false;
+        Debug.Log("Ending eject animation.");
+        ejectViewer.SetActive(false);
+        Destroy(ejectedPlayer);
+        players[Client.instance.myId]._controller.playerCamera.enabled = true;
+        Debug.Log("Eject animation ended.");
     }
 }
