@@ -106,6 +106,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1122814370905106887}
   - component: {fileID: 310700160960042831}
+  - component: {fileID: 2003443964179485522}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -149,3 +150,24 @@ MonoBehaviour:
   player: {fileID: 7604448628254038819}
   _controller: {fileID: 0}
   colourID: 0
+  meetingHost: 0
+  wasVoted: 0
+--- !u!95 &2003443964179485522
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7604448628254038819}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 60e8a24ff933a4d43a73f92e2d107a8c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

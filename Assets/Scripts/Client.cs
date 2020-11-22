@@ -11,7 +11,7 @@ public class Client : MonoBehaviour
     public static Client instance;
     public static int dataBufferSize = 4096;
 
-    public string ip = "127.0.0.1";
+    public string ip;
     public int port = 18450;
     public int myId = 0;
     public TCP tcp;
@@ -34,11 +34,6 @@ public class Client : MonoBehaviour
         }
     }
 
-    private void Start()
-    {
-        tcp = new TCP();
-        udp = new UDP();
-    }
 
     private void OnApplicationQuit()
     {
@@ -48,10 +43,15 @@ public class Client : MonoBehaviour
     /// <summary>Attempts to connect to the server.</summary>
     public void ConnectToServer()
     {
+        tcp = new TCP();
+        udp = new UDP();
+
         InitializeClientData();
 
         isConnected = true;
         tcp.Connect(); // Connect tcp, udp gets connected once tcp is done
+
+        Debug.Log($"Connecting to {ip}");
     }
 
     public class TCP

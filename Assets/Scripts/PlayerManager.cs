@@ -13,6 +13,7 @@ public class PlayerManager : MonoBehaviour
     public GameObject player;
     public PlayerController _controller;
     public int colourID;
+    public Animator anim;
 
     public bool meetingHost = false;
     public bool wasVoted = false;
@@ -75,5 +76,15 @@ public class PlayerManager : MonoBehaviour
         }
         GameManager.instance.ghostLight.enabled = true;
         GameManager.instance.map.SetActive(false);
+    }
+
+    public void StartMoveAnimation()
+    {
+        anim.SetTrigger("StartMoving");
+    }
+
+    public void StopMoveAnimation()
+    {
+        anim.SetTrigger("StopMoving");
     }
 }
