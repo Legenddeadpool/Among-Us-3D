@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ClientSend : MonoBehaviour
-{
-
-    /// <summary>Sends a packet to the server via TCP.</summary>
+{/// <summary>Sends a packet to the server via TCP.</summary>
     /// <param name="_packet">The packet to send to the sever.</param>
     private static void SendTCPData(Packet _packet)
     {

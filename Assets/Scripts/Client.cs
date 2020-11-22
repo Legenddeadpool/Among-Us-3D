@@ -54,7 +54,7 @@ public class Client : MonoBehaviour
         Debug.Log($"Connecting to {ip}");
     }
 
-    public class TCP
+        public class TCP
     {
         public TcpClient socket;
 
