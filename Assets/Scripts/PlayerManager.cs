@@ -6,6 +6,7 @@ public class PlayerManager : MonoBehaviour
 {
     public int id;
     public string username;
+    public string role;
     public float health;
     public float maxHealth;
     public MeshRenderer model;
@@ -78,13 +79,17 @@ public class PlayerManager : MonoBehaviour
         GameManager.instance.map.SetActive(false);
     }
 
-    public void StartMoveAnimation()
+    public void AnimateMovement(bool _isMoving)
     {
-        anim.SetTrigger("StartMoving");
-    }
-
-    public void StopMoveAnimation()
-    {
-        anim.SetTrigger("StopMoving");
+        if (_isMoving == true)
+        {
+            anim.SetTrigger("StartMoving");
+            Debug.Log($"Starting {username}'s move animation");
+        }
+        else
+        {
+            anim.SetTrigger("StopMoving");
+            Debug.Log($"Stopping {username}'s move animation");
+        }
     }
 }

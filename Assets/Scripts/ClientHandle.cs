@@ -49,6 +49,14 @@ public static void Welcome(Packet _packet)
         GameManager.players[_id].transform.rotation = _rotation;
     }
 
+    public static void PlayerAnimation(Packet _packet)
+    {
+        int _id = _packet.ReadInt();
+        bool _isMoving = _packet.ReadBool();
+        Debug.Log($"Player: {GameManager.players[_id].username} Moving : {_isMoving}");
+        GameManager.players[_id].AnimateMovement(_isMoving);
+    }
+
     public static void PlayerDisconnected(Packet _packet)
     {
         int _id = _packet.ReadInt();
@@ -152,5 +160,19 @@ public static void Welcome(Packet _packet)
         UIManager.instance.inMeeting = false;
         GameManager.instance.taskActive = false;
         Cursor.lockState = CursorLockMode.None;
+    }
+
+    public static void PlayerRoles(Packet _packet)
+    {
+        int _id = _packet.ReadInt();
+        string _role = _packet.ReadString();
+        GameManager.players[_id].role = _role;
+        //Updating UI Elements to in-game states.
+        UIManager.instance.mainUI.SetActive(true);
+        UIManager.instance.lobbyUI.SetActive(false);
+        if (_id == Client.instance.myId)
+        {
+            UIManager.instance.ShowRole(_role);
+        }
     }
 }

@@ -150,6 +150,7 @@ MonoBehaviour:
   player: {fileID: 7604448628254038819}
   _controller: {fileID: 0}
   colourID: 0
+  anim: {fileID: 2003443964179485522}
   meetingHost: 0
   wasVoted: 0
 --- !u!95 &2003443964179485522

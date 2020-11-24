@@ -49,7 +49,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UIObject: {fileID: 207803166221400470, guid: d58a4cffa149e544795bf69824aa169e, type: 3}
-  aliveOnly: 0
+  aliveOnly: 1
+  crewOnly: 0
 --- !u!65 &919164384
 BoxCollider:
   m_ObjectHideFlags: 0

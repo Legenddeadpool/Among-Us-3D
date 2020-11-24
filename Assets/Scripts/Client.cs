@@ -302,6 +302,7 @@ public class Client : MonoBehaviour
             { (int)ServerPackets.spawnPlayer, ClientHandle.SpawnPlayer },
             { (int)ServerPackets.playerPosition, ClientHandle.PlayerPosition },
             { (int)ServerPackets.playerRotation, ClientHandle.PlayerRotation },
+            { (int)ServerPackets.playerAnimation, ClientHandle.PlayerAnimation },
             { (int)ServerPackets.playerDisconnected, ClientHandle.PlayerDisconnected },
             { (int)ServerPackets.playerHealth, ClientHandle.PlayerHealth },
             { (int)ServerPackets.playerDied, ClientHandle.PlayerDied },
@@ -309,6 +310,7 @@ public class Client : MonoBehaviour
             { (int)ServerPackets.colourList, ClientHandle.ColourList },
             { (int)ServerPackets.meetingStarted, ClientHandle.MeetingStarted },
             { (int)ServerPackets.meetingEnded, ClientHandle.MeetingEnded },
+            { (int)ServerPackets.playerRoles, ClientHandle.PlayerRoles },
         };
 
         Debug.Log("Initialized packets.");

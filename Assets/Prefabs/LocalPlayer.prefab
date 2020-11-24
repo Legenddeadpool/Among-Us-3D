@@ -307,6 +307,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 0
   username: 
+  role: 
   health: 0
   maxHealth: 100
   model: {fileID: 4639921952049437794}
@@ -314,6 +315,7 @@ MonoBehaviour:
   player: {fileID: 7604448628254038819}
   _controller: {fileID: 1214282894415085356}
   colourID: 0
+  anim: {fileID: 0}
   meetingHost: 0
   wasVoted: 0
 --- !u!114 &1214282894415085356
@@ -328,6 +330,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e44a7ceaffef55448857829b3c444b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 310700160960042831}
   camTransform: {fileID: 2715022390220069078}
   playerCamera: {fileID: 4065300453582943342}
   aliveMask:

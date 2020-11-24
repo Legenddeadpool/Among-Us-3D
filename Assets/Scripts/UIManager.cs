@@ -16,7 +16,10 @@ public class UIManager : MonoBehaviour
     public GameObject colourUI;
     public GameObject hostMenu;
     public GameObject lobbyUI;
+    public GameObject mainUI;
     public GameObject meetingScreen;
+    public GameObject roleScreen;
+    public TMP_Text roleText;
     public TMP_Text ejectText;
 
     public bool inMeeting = false;
@@ -56,5 +59,21 @@ public class UIManager : MonoBehaviour
     public void SetLocalIP() 
     {
         ipField.text = "127.0.0.1";
+    }
+
+    public void ShowRole(string _role)
+    {
+        roleScreen.SetActive(true);
+        if (_role == "Impostor")
+        {
+            roleText.text = "Impostor";
+            roleScreen.GetComponent<Animator>().SetTrigger("ShowImpostor");
+        }
+
+        if (_role == "Crewmate")
+        {
+            roleText.text = "Crewmate";
+            roleScreen.GetComponent<Animator>().SetTrigger("ShowCrewmate");
+        }
     }
 }

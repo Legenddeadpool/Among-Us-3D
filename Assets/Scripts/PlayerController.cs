@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public PlayerManager player;
     public Transform camTransform;
     public Camera playerCamera = new Camera();
     public LayerMask aliveMask = new LayerMask();
@@ -12,6 +13,10 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Q))
         {
+            if (player.role == "Crewmate")
+            {
+                return;
+            }
             ClientSend.PlayerKill(camTransform.forward);
         }
         
@@ -57,13 +62,15 @@ public class PlayerController : MonoBehaviour
         {
             if (_hit.collider.CompareTag("Interactable")) 
             {
-                if(GameManager.players[Client.instance.myId].isDead)
+                if (GameManager.players[Client.instance.myId].isDead && _hit.collider.GetComponent<InteractManager>().aliveOnly)
                 {
-                    if(_hit.collider.GetComponent<InteractManager>().aliveOnly)
-                    {
-                        return;
-                    }
+                    return;
                 }
+                if (player.role == "Impostor" && _hit.collider.GetComponent<InteractManager>().crewOnly)
+                {
+                    return;
+                }
+
                 _hit.collider.GetComponent<InteractManager>().InteractStart();
                 Debug.Log("Interacting with task.");
             }

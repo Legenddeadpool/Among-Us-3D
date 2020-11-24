@@ -6,6 +6,7 @@ public class InteractManager : MonoBehaviour
 {
     public GameObject UIObject;
     public bool aliveOnly = false;
+    public bool crewOnly = false;
 
     void Awake () 
     {

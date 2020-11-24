@@ -16,7 +16,7 @@ MonoBehaviour:
   m_AdvancedMode: 0
   temperature:
     m_OverrideState: 1
-    m_Value: -18.1
+    m_Value: 3.5
     min: -100
     max: 100
   tint:
@@ -129,7 +129,7 @@ MonoBehaviour:
     m_Value: {x: 1, y: 1, z: 1, w: 1}
   midtones:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 1, z: 1, w: -0.011804462}
+    m_Value: {x: 1, y: 1, z: 1, w: 1}
   highlights:
     m_OverrideState: 1
     m_Value: {x: 1, y: 1, z: 1, w: 1}
@@ -139,11 +139,11 @@ MonoBehaviour:
     min: 0
   shadowsEnd:
     m_OverrideState: 0
-    m_Value: 0.2
+    m_Value: 0
     min: 0
   highlightsStart:
     m_OverrideState: 0
-    m_Value: 0.55
+    m_Value: 0
     min: 0
   highlightsEnd:
     m_OverrideState: 0
