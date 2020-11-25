@@ -18,7 +18,14 @@ public class EjectionEffects : MonoBehaviour
 
     public void EjectReveal()
     {
-        UIManager.instance.ejectText.text = $"{GameManager.instance.latestEject} has been ejected.";
+        if (GameManager.instance.latestEject.role == "Impostor")
+        {
+            UIManager.instance.ejectText.text = $"{GameManager.instance.latestEject.username} was the Impostor.";
+        }
+        else if (GameManager.instance.latestEject.role == "Crewmate")
+        {
+            UIManager.instance.ejectText.text = $"{GameManager.instance.latestEject.username} was not the Impostor.";
+        }
         UIManager.instance.ejectText.enabled = true;
     }
 

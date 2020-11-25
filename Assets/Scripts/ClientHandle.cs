@@ -159,7 +159,10 @@ public static void Welcome(Packet _packet)
         Destroy(GameManager.instance.meetingDisplay);
         UIManager.instance.inMeeting = false;
         GameManager.instance.taskActive = false;
-        Cursor.lockState = CursorLockMode.None;
+        if (Cursor.lockState != CursorLockMode.Locked)
+        {    
+            GameManager.players[Client.instance.myId].GetComponent<CameraController>().ToggleCursorMode();
+        }
     }
 
     public static void PlayerRoles(Packet _packet)

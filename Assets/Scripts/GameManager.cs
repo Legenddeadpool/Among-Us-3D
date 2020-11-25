@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
     public GameObject ejectViewer;
     public Animator ejectAnimator;
     public GameObject ejectPrefab;
-    public string latestEject = "Local Player";
+    public PlayerManager latestEject;
     public GameObject[] lights = new GameObject[16];
     public Light ghostLight;
     public GameObject map;
@@ -119,7 +119,7 @@ public class GameManager : MonoBehaviour
         {
             players[Client.instance.myId]._controller.playerCamera.GetComponent<CameraController>().ToggleCursorMode();
         }
-        latestEject = _ejectedPlayer.username;
+        latestEject = _ejectedPlayer;
         Debug.Log("Beginning eject animation.");
         players[Client.instance.myId]._controller.playerCamera.enabled = false;
         ejectedPlayer = Instantiate(ejectPrefab, new Vector3(5f, 13.5f, 17f), Quaternion.identity);
